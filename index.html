@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>Home Page</title>
-		<script type="module" crossorigin="" src="./js/index.min.js?v=1767620941846"></script>
-		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1767620941846">
-		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1767620941846">
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1767636634180"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1767636634180">
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1767636634180">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -27,6 +27,19 @@
 							</a>
 							<a href="tel:+380996384537" class="contact__tel">+38 (099)-638-50-00</a>
 						</div>
+						<!--
+<div class="contact__social social">
+<a href="#" class="social__pic">
+<img src="@img/telegram.svg" alt="telegram">
+</a>
+<a href="#" class="social__pic">
+<img src="@img/viber.svg" alt="viber">
+</a>
+<a href="#" class="social__pic">
+<img src="@img/instagram.svg" alt="instagram">
+</a>
+</div>
+-->
 					</div>
 				</div>
 				<div class="header__main-block">
@@ -97,9 +110,11 @@
 			<div class="header-spacer"></div>
 			<main class="page">
 				<div data-fls-index="" class="index">
-					<button type="button" class="btn-up">
-						<img src="./assets/img/logo.svg" alt="Image">
-					</button>
+					<!--
+<button type="button" class="btn-up">
+<img src="@img/logo.svg" alt="Image">
+</button>
+-->
 					<div class="index__social social">
 						<a href="#" class="social__pic">
 							<img src="./assets/img/telegram.svg" alt="telegram">
@@ -119,10 +134,7 @@
 								<div class="hero__wrapper swiper-wrapper">
 									<!-- Слайд -->
 									<div class="hero__slide swiper-slide">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
-											<img alt="Image" src="./assets/img/mainSlider/item1.webp">
-										</picture>
+										<img src="assets/img/mainSlider/item1.jpg" alt="Image">
 									</div>
 									<div class="hero__slide swiper-slide">
 										<picture>
@@ -152,113 +164,177 @@
 											<picture>
 												<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/1-600.webp" type="image/webp">
 												<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/1-1200.webp" type="image/webp">
-												<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/1.webp">
+												<img alt="Диван Хілтон" class="card__img" src="./assets/img/mainSlider/1.webp">
 											</picture>
 										</div>
-										<!--
-<div class="card__info">
-<h3 class="card__title">Диван такий-то</h3>
-<span class="card__price">
-50 000 грн
-</span>
-</div>
--->
-									</a>
-								</article>
-								<article class="catalog__card card">
-									<a href="#" class="card__link card__link--test">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/2-600.webp" type="image/webp">
-											<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/2-1200.webp" type="image/webp">
-											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/2.webp">
-										</picture>
-										<div class="card__info card__info--test">
-											<h3 class="card__title">Диван такий-то</h3>
-											<span class="card__price">50 000 грн</span>
+										<div class="card__info">
+											<h3 class="card__title">Хілтон</h3>
+											<span class="card__price">20 000 грн</span>
 										</div>
 									</a>
 								</article>
 								<article class="catalog__card card">
 									<a href="#" class="card__link">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
-											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/item1.webp">
-										</picture>
+										<div class="card__pic">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/2-600.webp" type="image/webp">
+												<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/2-1200.webp" type="image/webp">
+												<img alt="Диван Хілтон" class="card__img" src="./assets/img/mainSlider/2.webp">
+											</picture>
+										</div>
 										<div class="card__info">
-											<h3 class="card__title">Диван такий-то</h3>
-											<span class="card__price">50 000 грн</span>
+											<h3 class="card__title">Хілтон</h3>
+											<span class="card__price">20 000 грн</span>
 										</div>
 									</a>
 								</article>
 								<article class="catalog__card card">
 									<a href="#" class="card__link">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
-											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/item1.webp">
-										</picture>
+										<div class="card__pic">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/3-600.webp" type="image/webp">
+												<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/3-1200.webp" type="image/webp">
+												<img alt="Диван Турін" class="card__img" src="./assets/img/mainSlider/3.webp">
+											</picture>
+										</div>
 										<div class="card__info">
-											<h3 class="card__title">Диван такий-то</h3>
-											<span class="card__price">50 000 грн</span>
+											<h3 class="card__title">Турін</h3>
+											<span class="card__price">21 000 грн</span>
 										</div>
 									</a>
 								</article>
 								<article class="catalog__card card">
 									<a href="#" class="card__link">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
-											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/item1.webp">
-										</picture>
+										<div class="card__pic">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/4-600.webp" type="image/webp">
+												<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/4-1200.webp" type="image/webp">
+												<img alt="Диван Рітм" class="card__img" src="./assets/img/mainSlider/4.webp">
+											</picture>
+										</div>
 										<div class="card__info">
-											<h3 class="card__title">Диван такий-то</h3>
-											<span class="card__price">50 000 грн</span>
+											<h3 class="card__title">Рітм</h3>
+											<span class="card__price">16 000 грн</span>
 										</div>
 									</a>
 								</article>
 								<article class="catalog__card card">
 									<a href="#" class="card__link">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
-											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/item1.webp">
-										</picture>
+										<div class="card__pic">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/5-600.webp" type="image/webp">
+												<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/5-1200.webp" type="image/webp">
+												<img alt="Диван Моріс" class="card__img" src="./assets/img/mainSlider/5.webp">
+											</picture>
+										</div>
 										<div class="card__info">
-											<h3 class="card__title">Диван такий-то</h3>
-											<span class="card__price">50 000 грн</span>
+											<h3 class="card__title">Моріс</h3>
+											<span class="card__price">15 500 грн</span>
 										</div>
 									</a>
 								</article>
 								<article class="catalog__card card">
 									<a href="#" class="card__link">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
-											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/item1.webp">
-										</picture>
+										<div class="card__pic">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/6-600.webp" type="image/webp">
+												<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/6-1200.webp" type="image/webp">
+												<img alt="Диван Люкс" class="card__img" src="./assets/img/mainSlider/6.webp">
+											</picture>
+										</div>
 										<div class="card__info">
-											<h3 class="card__title">Диван такий-то</h3>
-											<span class="card__price">50 000 грн</span>
+											<h3 class="card__title">Люкс</h3>
+											<span class="card__price">16 800 грн</span>
 										</div>
 									</a>
 								</article>
 								<article class="catalog__card card">
 									<a href="#" class="card__link">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
-											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/item1.webp">
-										</picture>
+										<div class="card__pic">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/7-600.webp" type="image/webp">
+												<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/7-1200.webp" type="image/webp">
+												<img alt="Диван Ренк" class="card__img" src="./assets/img/mainSlider/7.webp">
+											</picture>
+										</div>
 										<div class="card__info">
-											<h3 class="card__title">Диван такий-то</h3>
-											<span class="card__price">50 000 грн</span>
+											<h3 class="card__title">Ренк</h3>
+											<span class="card__price">16 500 грн</span>
 										</div>
 									</a>
 								</article>
 								<article class="catalog__card card">
 									<a href="#" class="card__link">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
-											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/item1.webp">
-										</picture>
+										<div class="card__pic">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/8-600.webp" type="image/webp">
+												<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/8-1200.webp" type="image/webp">
+												<img alt="Диван Грант" class="card__img" src="./assets/img/mainSlider/8.webp">
+											</picture>
+										</div>
 										<div class="card__info">
-											<h3 class="card__title">Диван такий-то</h3>
-											<span class="card__price">50 000 грн</span>
+											<h3 class="card__title">Грант</h3>
+											<span class="card__price">23 000 грн</span>
+										</div>
+									</a>
+								</article>
+								<article class="catalog__card card">
+									<a href="#" class="card__link">
+										<div class="card__pic">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/9-600.webp" type="image/webp">
+												<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/9-1200.webp" type="image/webp">
+												<img alt="Диван Грант" class="card__img" src="./assets/img/mainSlider/9.webp">
+											</picture>
+										</div>
+										<div class="card__info">
+											<h3 class="card__title">Грант</h3>
+											<span class="card__price">23 000 грн</span>
+										</div>
+									</a>
+								</article>
+								<article class="catalog__card card">
+									<a href="#" class="card__link">
+										<div class="card__pic">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/10-600.webp" type="image/webp">
+												<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/10-1200.webp" type="image/webp">
+												<img alt="Диван Моріс" class="card__img" src="./assets/img/mainSlider/10.webp">
+											</picture>
+										</div>
+										<div class="card__info">
+											<h3 class="card__title">Моріс</h3>
+											<span class="card__price">15 500 грн</span>
+										</div>
+									</a>
+								</article>
+								<article class="catalog__card card">
+									<a href="#" class="card__link">
+										<div class="card__pic">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/11-600.webp" type="image/webp">
+												<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/11-1200.webp" type="image/webp">
+												<img alt="Диван Далас" class="card__img" src="./assets/img/mainSlider/11.webp">
+											</picture>
+										</div>
+										<div class="card__info">
+											<h3 class="card__title">Далас</h3>
+											<span class="card__price">17 000 грн</span>
+										</div>
+									</a>
+								</article>
+								<article class="catalog__card card">
+									<a href="#" class="card__link">
+										<div class="card__pic">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/12-600.webp" type="image/webp">
+												<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/12-1200.webp" type="image/webp">
+												<img alt="Диван Ліра" class="card__img" src="./assets/img/mainSlider/12.webp">
+											</picture>
+										</div>
+										<div class="card__info">
+											<h3 class="card__title">Ліра</h3>
+											<span class="card__price">16 000 грн</span>
 										</div>
 									</a>
 								</article>
@@ -269,9 +345,11 @@
 			</main>
 			<footer data-fls-footer="" class="footer">
 				<div class="footer__container">
-					<div class="footer__logo">
-						<img src="./assets/img/logo.svg" alt="logo">
-					</div>
+					<!--
+<div class="footer__logo">
+<img src="@img/logo.svg" alt="logo">
+</div>
+-->
 					<ul class="footer__list">
 						<li class="footer__item">
 							<a href="#" class="footer__link">Доставка</a>
