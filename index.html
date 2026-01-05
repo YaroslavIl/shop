@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="./assets/img/favicon.ico">
+		<title>Home Page</title>
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1767620941846"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1767620941846">
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1767620941846">
+	</head>
+	<body>
+		<div class="wrapper">
+			<header data-fls-header="" class="header">
+				<!-- <div class="header__container"> -->
+				<div class="header__contact contact">
+					<div class="contact__container">
+						<div class="contact__item">
+							<a class="contact__tel-icon" href="tel:+380996384537">
+								<img src="./assets/img/tel.svg" alt="icon-tel">
+							</a>
+							<a href="tel:+380996384537" class="contact__tel">+38 (099)-638-45-37</a>
+						</div>
+						<div class="contact__item">
+							<a class="contact__tel-icon" href="tel:+380996384537">
+								<img src="./assets/img/tel.svg" alt="icon-tel">
+							</a>
+							<a href="tel:+380996384537" class="contact__tel">+38 (099)-638-50-00</a>
+						</div>
+					</div>
+				</div>
+				<div class="header__main-block">
+					<div class="header__container">
+						<div class="header__logo">
+							<img src="./assets/img/logo.svg" alt="logo">
+						</div>
+						<div class="contact__container contact__container--none">
+							<div class="contact__item">
+								<a class="contact__tel-icon" href="tel:+380996384537">
+									<img src="./assets/img/tel.svg" alt="icon-tel">
+								</a>
+								<a href="tel:+380996384537" class="contact__tel">+38 (099)-638-45-37</a>
+							</div>
+							<div class="contact__item">
+								<a class="contact__tel-icon" href="tel:+380996384537">
+									<img src="./assets/img/tel.svg" alt="icon-tel">
+								</a>
+								<a href="tel:+380996384537" class="contact__tel">+38 (099)-638-50-00</a>
+							</div>
+						</div>
+						<div class="header__menu menu">
+							<button type="button" data-fls-menu="" class="menu__icon icon-menu">
+								<span></span>
+							</button>
+							<nav class="menu__body">
+								<ul class="menu__list">
+									<li class="menu__item">
+										<a href="#" class="menu__link">Головна</a>
+									</li>
+									<li class="menu__item">
+										<a href="#" class="menu__link">Дивани</a>
+									</li>
+									<li class="menu__item">
+										<a href="#" class="menu__link">Ліжка</a>
+									</li>
+									<li class="menu__item">
+										<a href="#" class="menu__link">Тканини</a>
+									</li>
+									<li class="menu__item">
+										<a href="#" class="menu__link">Замовити</a>
+									</li>
+									<li class="menu__item">
+										<a href="#" class="menu__link">Доставка</a>
+									</li>
+									<li class="menu__item">
+										<a href="#" class="menu__link">Гарантії</a>
+									</li>
+									<li class="menu__item">
+										<a href="#" class="menu__link">Контакти</a>
+									</li>
+									<li class="menu__item">
+										<a href="#" class="menu__link">Дилерам</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+						<!--
+<fetch url="@components/layout/menu/menu.json">
+<each loop='item in response'>
+</each>
+</fetch>
+-->
+					</div>
+				</div>
+				<!-- </div> -->
+			</header>
+			<div class="header-spacer"></div>
+			<main class="page">
+				<div data-fls-index="" class="index">
+					<button type="button" class="btn-up">
+						<img src="./assets/img/logo.svg" alt="Image">
+					</button>
+					<div class="index__social social">
+						<a href="#" class="social__pic">
+							<img src="./assets/img/telegram.svg" alt="telegram">
+						</a>
+						<a href="#" class="social__pic">
+							<img src="./assets/img/viber.svg" alt="viber">
+						</a>
+						<a href="#" class="social__pic">
+							<img src="./assets/img/instagram.svg" alt="instagram">
+						</a>
+					</div>
+					<div class="index__container">
+						<div class="index__hero hero">
+							<!-- Оболонка слайдера -->
+							<div data-fls-slider="" class="hero__slider swiper">
+								<!-- Частина слайдера, що рухається -->
+								<div class="hero__wrapper swiper-wrapper">
+									<!-- Слайд -->
+									<div class="hero__slide swiper-slide">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
+											<img alt="Image" src="./assets/img/mainSlider/item1.webp">
+										</picture>
+									</div>
+									<div class="hero__slide swiper-slide">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/2-600.webp" type="image/webp">
+											<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/2-1200.webp" type="image/webp">
+											<img alt="Image" src="./assets/img/mainSlider/2.webp">
+										</picture>
+									</div>
+									<div class="hero__slide swiper-slide">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/1-600.webp" type="image/webp">
+											<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/1-1200.webp" type="image/webp">
+											<img alt="Image" src="./assets/img/mainSlider/1.webp">
+										</picture>
+									</div>
+								</div>
+								<button type="button" class="swiper-button-prev hero__button-prev"></button>
+								<button type="button" class="swiper-button-next hero__button-next"></button>
+							</div>
+						</div>
+						<section class="index__catalog catalog">
+							<h2 class="catalog__title">Каталог</h2>
+							<div class="catalog__grid">
+								<article class="catalog__card card">
+									<a href="#" class="card__link">
+										<div class="card__pic">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/1-600.webp" type="image/webp">
+												<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/1-1200.webp" type="image/webp">
+												<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/1.webp">
+											</picture>
+										</div>
+										<!--
+<div class="card__info">
+<h3 class="card__title">Диван такий-то</h3>
+<span class="card__price">
+50 000 грн
+</span>
+</div>
+-->
+									</a>
+								</article>
+								<article class="catalog__card card">
+									<a href="#" class="card__link card__link--test">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/2-600.webp" type="image/webp">
+											<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/2-1200.webp" type="image/webp">
+											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/2.webp">
+										</picture>
+										<div class="card__info card__info--test">
+											<h3 class="card__title">Диван такий-то</h3>
+											<span class="card__price">50 000 грн</span>
+										</div>
+									</a>
+								</article>
+								<article class="catalog__card card">
+									<a href="#" class="card__link">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
+											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/item1.webp">
+										</picture>
+										<div class="card__info">
+											<h3 class="card__title">Диван такий-то</h3>
+											<span class="card__price">50 000 грн</span>
+										</div>
+									</a>
+								</article>
+								<article class="catalog__card card">
+									<a href="#" class="card__link">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
+											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/item1.webp">
+										</picture>
+										<div class="card__info">
+											<h3 class="card__title">Диван такий-то</h3>
+											<span class="card__price">50 000 грн</span>
+										</div>
+									</a>
+								</article>
+								<article class="catalog__card card">
+									<a href="#" class="card__link">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
+											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/item1.webp">
+										</picture>
+										<div class="card__info">
+											<h3 class="card__title">Диван такий-то</h3>
+											<span class="card__price">50 000 грн</span>
+										</div>
+									</a>
+								</article>
+								<article class="catalog__card card">
+									<a href="#" class="card__link">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
+											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/item1.webp">
+										</picture>
+										<div class="card__info">
+											<h3 class="card__title">Диван такий-то</h3>
+											<span class="card__price">50 000 грн</span>
+										</div>
+									</a>
+								</article>
+								<article class="catalog__card card">
+									<a href="#" class="card__link">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
+											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/item1.webp">
+										</picture>
+										<div class="card__info">
+											<h3 class="card__title">Диван такий-то</h3>
+											<span class="card__price">50 000 грн</span>
+										</div>
+									</a>
+								</article>
+								<article class="catalog__card card">
+									<a href="#" class="card__link">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
+											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/item1.webp">
+										</picture>
+										<div class="card__info">
+											<h3 class="card__title">Диван такий-то</h3>
+											<span class="card__price">50 000 грн</span>
+										</div>
+									</a>
+								</article>
+								<article class="catalog__card card">
+									<a href="#" class="card__link">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/item1-600.webp" type="image/webp">
+											<img alt="Диван такий-то" class="card__img" src="./assets/img/mainSlider/item1.webp">
+										</picture>
+										<div class="card__info">
+											<h3 class="card__title">Диван такий-то</h3>
+											<span class="card__price">50 000 грн</span>
+										</div>
+									</a>
+								</article>
+							</div>
+						</section>
+					</div>
+				</div>
+			</main>
+			<footer data-fls-footer="" class="footer">
+				<div class="footer__container">
+					<div class="footer__logo">
+						<img src="./assets/img/logo.svg" alt="logo">
+					</div>
+					<ul class="footer__list">
+						<li class="footer__item">
+							<a href="#" class="footer__link">Доставка</a>
+						</li>
+						<li class="footer__item">
+							<a href="#" class="footer__link">Гарантії</a>
+						</li>
+						<li class="footer__item">
+							<a href="#" class="footer__link">Контакти</a>
+						</li>
+						<li class="footer__item">
+							<a href="#" class="footer__link">Дилерам</a>
+						</li>
+					</ul>
+					<div class="footer__social social">
+						<a href="#" class="social__pic">
+							<img src="./assets/img/telegram.svg" alt="telegram">
+						</a>
+						<a href="#" class="social__pic">
+							<img src="./assets/img/viber.svg" alt="viber">
+						</a>
+						<a href="#" class="social__pic">
+							<img src="./assets/img/instagram.svg" alt="instagram">
+						</a>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>
