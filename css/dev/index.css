@@ -176,9 +176,6 @@ body {
   color: black;
 }
 
-.card__pic {
-  aspect-ratio: 400/280;
-}
 .card__img {
   height: 100%;
   width: 100%;
@@ -541,9 +538,6 @@ body {
 }@media (max-width: 31.25em){
   .menu__body {
     height: calc(100svh - 2.875rem);
-  }
-  .header-spacer {
-    height: 10.625rem;
   }
 }@media (max-width: 25em){
   .header .contact__tel {
