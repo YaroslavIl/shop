@@ -1,4 +1,4 @@
-import { d as dataMediaQueries, s as slideToggle, a as slideUp, b as bodyLockToggle, c as bodyLockStatus } from "./common.min.js";
+import { d as dataMediaQueries, s as slideToggle, a as slideUp, b as bodyLock, c as bodyUnlock, e as bodyLockStatus, f as bodyLockToggle, u as uniqArray, g as gotoBlock, h as getHash } from "./common.min.js";
 (function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) return;
@@ -243,7 +243,7 @@ const ssrWindow = {
     back() {
     }
   },
-  CustomEvent: function CustomEvent() {
+  CustomEvent: function CustomEvent2() {
     return this;
   },
   addEventListener() {
@@ -4770,6 +4770,308 @@ function initSliders() {
   }
 }
 document.querySelector("[data-fls-slider]") ? window.addEventListener("load", initSliders) : null;
+class Popup {
+  constructor(options) {
+    let config = {
+      logging: true,
+      init: true,
+      //Для кнопок
+      attributeOpenButton: "data-fls-popup-link",
+      // Атрибут для кнопки, яка викликає попап
+      attributeCloseButton: "data-fls-popup-close",
+      // Атрибут для кнопки, що закриває попап
+      // Для сторонніх об'єктів
+      fixElementSelector: "[data-fls-lp]",
+      // Атрибут для елементів із лівим паддингом (які fixed)
+      // Для об'єкту попапа
+      attributeMain: "data-fls-popup",
+      youtubeAttribute: "data-fls-popup-youtube",
+      // Атрибут для коду youtube
+      youtubePlaceAttribute: "data-fls-popup-youtube-place",
+      // Атрибут для вставки ролика youtube
+      setAutoplayYoutube: true,
+      // Зміна класів
+      classes: {
+        popup: "popup",
+        // popupWrapper: 'popup__wrapper',
+        popupContent: "data-fls-popup-body",
+        popupActive: "data-fls-popup-active",
+        // Додається для попапа, коли він відкривається
+        bodyActive: "data-fls-popup-open"
+        // Додається для боді, коли попап відкритий
+      },
+      focusCatch: true,
+      // Фокус усередині попапа зациклений
+      closeEsc: true,
+      // Закриття ESC
+      bodyLock: true,
+      // Блокування скролла
+      hashSettings: {
+        location: true,
+        // Хеш в адресному рядку
+        goHash: true
+        // Перехід по наявності в адресному рядку
+      },
+      on: {
+        // Події
+        beforeOpen: function() {
+        },
+        afterOpen: function() {
+        },
+        beforeClose: function() {
+        },
+        afterClose: function() {
+        }
+      }
+    };
+    this.youTubeCode;
+    this.isOpen = false;
+    this.targetOpen = {
+      selector: false,
+      element: false
+    };
+    this.previousOpen = {
+      selector: false,
+      element: false
+    };
+    this.lastClosed = {
+      selector: false,
+      element: false
+    };
+    this._dataValue = false;
+    this.hash = false;
+    this._reopen = false;
+    this._selectorOpen = false;
+    this.lastFocusEl = false;
+    this._focusEl = [
+      "a[href]",
+      'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
+      "button:not([disabled]):not([aria-hidden])",
+      "select:not([disabled]):not([aria-hidden])",
+      "textarea:not([disabled]):not([aria-hidden])",
+      "area[href]",
+      "iframe",
+      "object",
+      "embed",
+      "[contenteditable]",
+      '[tabindex]:not([tabindex^="-"])'
+    ];
+    this.options = {
+      ...config,
+      ...options,
+      classes: {
+        ...config.classes,
+        ...options?.classes
+      },
+      hashSettings: {
+        ...config.hashSettings,
+        ...options?.hashSettings
+      },
+      on: {
+        ...config.on,
+        ...options?.on
+      }
+    };
+    this.bodyLock = false;
+    this.options.init ? this.initPopups() : null;
+  }
+  initPopups() {
+    this.buildPopup();
+    this.eventsPopup();
+  }
+  buildPopup() {
+  }
+  eventsPopup() {
+    document.addEventListener("click", (function(e) {
+      const buttonOpen = e.target.closest(`[${this.options.attributeOpenButton}]`);
+      if (buttonOpen) {
+        e.preventDefault();
+        this._dataValue = buttonOpen.getAttribute(this.options.attributeOpenButton) ? buttonOpen.getAttribute(this.options.attributeOpenButton) : "error";
+        this.youTubeCode = buttonOpen.getAttribute(this.options.youtubeAttribute) ? buttonOpen.getAttribute(this.options.youtubeAttribute) : null;
+        if (this._dataValue !== "error") {
+          if (!this.isOpen) this.lastFocusEl = buttonOpen;
+          this.targetOpen.selector = `${this._dataValue}`;
+          this._selectorOpen = true;
+          this.open();
+          return;
+        }
+        return;
+      }
+      const buttonClose = e.target.closest(`[${this.options.attributeCloseButton}]`);
+      if (buttonClose || !e.target.closest(`[${this.options.classes.popupContent}]`) && this.isOpen) {
+        e.preventDefault();
+        this.close();
+        return;
+      }
+    }).bind(this));
+    document.addEventListener("keydown", (function(e) {
+      if (this.options.closeEsc && e.which == 27 && e.code === "Escape" && this.isOpen) {
+        e.preventDefault();
+        this.close();
+        return;
+      }
+      if (this.options.focusCatch && e.which == 9 && this.isOpen) {
+        this._focusCatch(e);
+        return;
+      }
+    }).bind(this));
+    if (this.options.hashSettings.goHash) {
+      window.addEventListener("hashchange", (function() {
+        if (window.location.hash) {
+          this._openToHash();
+        } else {
+          this.close(this.targetOpen.selector);
+        }
+      }).bind(this));
+      if (window.location.hash) {
+        this._openToHash();
+      }
+    }
+  }
+  open(selectorValue) {
+    if (bodyLockStatus) {
+      this.bodyLock = document.documentElement.hasAttribute("data-fls-scrolllock") && !this.isOpen ? true : false;
+      if (selectorValue && typeof selectorValue === "string" && selectorValue.trim() !== "") {
+        this.targetOpen.selector = selectorValue;
+        this._selectorOpen = true;
+      }
+      if (this.isOpen) {
+        this._reopen = true;
+        this.close();
+      }
+      if (!this._selectorOpen) this.targetOpen.selector = this.lastClosed.selector;
+      if (!this._reopen) this.previousActiveElement = document.activeElement;
+      this.targetOpen.element = document.querySelector(`[${this.options.attributeMain}=${this.targetOpen.selector}]`);
+      if (this.targetOpen.element) {
+        const codeVideo = this.youTubeCode || this.targetOpen.element.getAttribute(`${this.options.youtubeAttribute}`);
+        if (codeVideo) {
+          const urlVideo = `https://www.youtube.com/embed/${codeVideo}?rel=0&showinfo=0&autoplay=1`;
+          const iframe = document.createElement("iframe");
+          const autoplay = this.options.setAutoplayYoutube ? "autoplay;" : "";
+          iframe.setAttribute("allowfullscreen", "");
+          iframe.setAttribute("allow", `${autoplay}; encrypted-media`);
+          iframe.setAttribute("src", urlVideo);
+          if (!this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) {
+            this.targetOpen.element.querySelector("[data-fls-popup-content]").setAttribute(`${this.options.youtubePlaceAttribute}`, "");
+          }
+          this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).appendChild(iframe);
+        }
+        if (this.options.hashSettings.location) {
+          this._getHash();
+          this._setHash();
+        }
+        this.options.on.beforeOpen(this);
+        document.dispatchEvent(new CustomEvent("beforePopupOpen", {
+          detail: {
+            popup: this
+          }
+        }));
+        this.targetOpen.element.setAttribute(this.options.classes.popupActive, "");
+        document.documentElement.setAttribute(this.options.classes.bodyActive, "");
+        if (!this._reopen) {
+          !this.bodyLock ? bodyLock() : null;
+        } else this._reopen = false;
+        this.targetOpen.element.setAttribute("aria-hidden", "false");
+        this.previousOpen.selector = this.targetOpen.selector;
+        this.previousOpen.element = this.targetOpen.element;
+        this._selectorOpen = false;
+        this.isOpen = true;
+        setTimeout(() => {
+          this._focusTrap();
+        }, 50);
+        this.options.on.afterOpen(this);
+        document.dispatchEvent(new CustomEvent("afterPopupOpen", {
+          detail: {
+            popup: this
+          }
+        }));
+      }
+    }
+  }
+  close(selectorValue) {
+    if (selectorValue && typeof selectorValue === "string" && selectorValue.trim() !== "") {
+      this.previousOpen.selector = selectorValue;
+    }
+    if (!this.isOpen || !bodyLockStatus) {
+      return;
+    }
+    this.options.on.beforeClose(this);
+    document.dispatchEvent(new CustomEvent("beforePopupClose", {
+      detail: {
+        popup: this
+      }
+    }));
+    if (this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) {
+      setTimeout(() => {
+        this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).innerHTML = "";
+      }, 500);
+    }
+    this.previousOpen.element.removeAttribute(this.options.classes.popupActive);
+    this.previousOpen.element.setAttribute("aria-hidden", "true");
+    if (!this._reopen) {
+      document.documentElement.removeAttribute(this.options.classes.bodyActive);
+      !this.bodyLock ? bodyUnlock() : null;
+      this.isOpen = false;
+    }
+    this._removeHash();
+    if (this._selectorOpen) {
+      this.lastClosed.selector = this.previousOpen.selector;
+      this.lastClosed.element = this.previousOpen.element;
+    }
+    this.options.on.afterClose(this);
+    document.dispatchEvent(new CustomEvent("afterPopupClose", {
+      detail: {
+        popup: this
+      }
+    }));
+    setTimeout(() => {
+      this._focusTrap();
+    }, 50);
+  }
+  // Отримання хешу 
+  _getHash() {
+    if (this.options.hashSettings.location) {
+      this.hash = `#${this.targetOpen.selector}`;
+    }
+  }
+  _openToHash() {
+    let classInHash = window.location.hash.replace("#", "");
+    const openButton = document.querySelector(`[${this.options.attributeOpenButton}="${classInHash}"]`);
+    if (openButton) {
+      this.youTubeCode = openButton.getAttribute(this.options.youtubeAttribute) ? openButton.getAttribute(this.options.youtubeAttribute) : null;
+    }
+    if (classInHash) this.open(classInHash);
+  }
+  // Встановлення хеша
+  _setHash() {
+    history.pushState("", "", this.hash);
+  }
+  _removeHash() {
+    history.pushState("", "", window.location.href.split("#")[0]);
+  }
+  _focusCatch(e) {
+    const focusable = this.targetOpen.element.querySelectorAll(this._focusEl);
+    const focusArray = Array.prototype.slice.call(focusable);
+    const focusedIndex = focusArray.indexOf(document.activeElement);
+    if (e.shiftKey && focusedIndex === 0) {
+      focusArray[focusArray.length - 1].focus();
+      e.preventDefault();
+    }
+    if (!e.shiftKey && focusedIndex === focusArray.length - 1) {
+      focusArray[0].focus();
+      e.preventDefault();
+    }
+  }
+  _focusTrap() {
+    const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
+    if (!this.isOpen && this.lastFocusEl) {
+      this.lastFocusEl.focus();
+    } else {
+      focusable[0].focus();
+    }
+  }
+}
+document.querySelector("[data-fls-popup]") ? window.addEventListener("load", () => window.flsPopup = new Popup({})) : null;
 function menuInit() {
   document.addEventListener("click", function(e) {
     if (bodyLockStatus && e.target.closest("[data-fls-menu]")) {
@@ -4779,3 +5081,411 @@ function menuInit() {
   });
 }
 document.querySelector("[data-fls-menu]") ? window.addEventListener("load", menuInit) : null;
+const MSG_DEPRECATED_LOADER = "The Loader class is no longer available in this version.\nPlease use the new functional API: setOptions() and importLibrary().\nFor more information, see the updated documentation at: https://github.com/googlemaps/js-api-loader/blob/main/README.md";
+class Loader {
+  constructor(...args) {
+    throw new Error(`[@googlemaps/js-api-loader]: ${MSG_DEPRECATED_LOADER}`);
+  }
+}
+const MAP_KEY = ``;
+const MAP_STYLES = [
+  {
+    featureType: "administrative",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#B1AEAE"
+      }
+    ]
+  },
+  {
+    featureType: "landscape",
+    elementType: "all",
+    stylers: [
+      {
+        color: "#E5E2E2"
+      }
+    ]
+  },
+  {
+    featureType: "poi",
+    elementType: "labels.icon",
+    stylers: [
+      {
+        saturation: -100
+      },
+      {
+        lightness: 45
+      }
+    ]
+  },
+  {
+    featureType: "poi",
+    elementType: "labels.text",
+    stylers: [
+      {
+        visibility: "off"
+      }
+    ]
+  },
+  {
+    featureType: "road",
+    elementType: "geometry.fill",
+    stylers: [
+      {
+        color: "#D6D3D3"
+      }
+    ]
+  },
+  {
+    featureType: "road",
+    elementType: "geometry.stroke",
+    stylers: [
+      {
+        color: "#CECBCB"
+      }
+    ]
+  },
+  {
+    featureType: "road",
+    elementType: "labels.text.fill",
+    stylers: [
+      {
+        color: "#B0AEAE"
+      }
+    ]
+  },
+  {
+    featureType: "road",
+    elementType: "labels.text.stroke",
+    stylers: [
+      {
+        color: "#E4E1E1"
+      }
+    ]
+  },
+  {
+    featureType: "road.highway",
+    elementType: "all",
+    stylers: [
+      {
+        visibility: "simplified"
+      },
+      {
+        saturation: -100
+      }
+    ]
+  },
+  {
+    featureType: "road.arterial",
+    elementType: "labels.icon",
+    stylers: [
+      {
+        visibility: "off"
+      }
+    ]
+  },
+  {
+    featureType: "transit",
+    elementType: "all",
+    stylers: [
+      {
+        visibility: "on"
+      },
+      {
+        saturation: -100
+      },
+      {
+        lightness: 50
+      }
+    ]
+  },
+  {
+    featureType: "water",
+    elementType: "all",
+    stylers: [
+      {
+        color: "#D0CDCD"
+      },
+      {
+        visibility: "on"
+      }
+    ]
+  }
+];
+function mapInit() {
+  const SELECTORS = {
+    section: "[data-fls-map]",
+    marker: "[data-fls-map-marker]",
+    map: "[data-fls-map-body]"
+  };
+  const $sections = document.querySelectorAll(SELECTORS.section);
+  if (!$sections.length) return;
+  const loadMap = async (onLoad2) => {
+    const loader = new Loader({
+      apiKey: MAP_KEY,
+      version: "weekly",
+      libraries: ["places"]
+    });
+    try {
+      const { Map } = await loader.importLibrary("maps");
+      const { AdvancedMarkerElement } = await loader.importLibrary("marker");
+      const Core = await loader.importLibrary("core");
+      onLoad2({ Map, AdvancedMarkerElement, Core });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const initMap = async ({ api, lng, lat, markersData, zoom, maxZoom, $map }) => {
+    const mapOptions = {
+      maxZoom,
+      zoom,
+      mapTypeControl: false,
+      styles: MAP_STYLES,
+      center: {
+        lat,
+        lng
+      },
+      disableDefaultUI: true,
+      mapId: "DEMO_MAP_ID"
+    };
+    const map = new api.Map($map, mapOptions);
+    await markersData.map(({ lat: lat2, lng: lng2, icon, title, markerZoom, markerPopup }) => {
+      let image;
+      if (icon) {
+        image = document.createElement("img");
+        image.src = icon;
+      }
+      const marker = new api.AdvancedMarkerElement({
+        map,
+        title,
+        gmpClickable: true,
+        position: new api.Core.LatLng(lat2, lng2),
+        content: icon ? image : null
+      });
+      marker.addEventListener("gmp-click", () => {
+        markerZoom.enable ? map.setZoom(+markerZoom.value || 10) : null;
+        if (markerPopup.enable && window.flsPopup) {
+          window.flsPopup.open(markerPopup.value);
+        }
+        map.panTo(marker.position);
+      });
+      return marker;
+    });
+    return map;
+  };
+  loadMap((api) => {
+    $sections.forEach(($section) => {
+      const $maps = $section.querySelectorAll(SELECTORS.map);
+      if (!$maps.length) return;
+      $maps.forEach(($map) => {
+        const $markers = $map.parentElement.querySelectorAll(SELECTORS.marker);
+        const markersData = Array.from($markers).map(($marker) => ({
+          lng: parseFloat($marker.dataset.flsMapLng) || 0,
+          lat: parseFloat($marker.dataset.flsMapLat) || 0,
+          icon: $marker.dataset.flsMapIcon,
+          title: $marker.dataset.flsMapTitle,
+          markerZoom: {
+            enable: $marker.hasAttribute("data-fls-map-marker-zoom"),
+            value: $marker.dataset.flsMapMarkerZoom
+          },
+          markerPopup: {
+            enable: $marker.hasAttribute("data-fls-map-marker-popup"),
+            value: $marker.dataset.flsMapMarkerPopup
+          }
+        }));
+        const map = initMap({
+          api,
+          $map,
+          lng: parseFloat($map.dataset.flsMapLng) || 0,
+          lat: parseFloat($map.dataset.flsMapLat) || 0,
+          zoom: parseFloat($map.dataset.flsMapZoom) || 6,
+          maxZoom: parseFloat($map.dataset.flsMapMaxZoom) || 18,
+          markersData
+        });
+      });
+    });
+  });
+}
+document.querySelector("[data-fls-map]") ? window.addEventListener("load", mapInit) : null;
+class ScrollWatcher {
+  constructor(props) {
+    let defaultConfig = {
+      logging: true
+    };
+    this.config = Object.assign(defaultConfig, props);
+    this.observer;
+    !document.documentElement.hasAttribute("data-fls-watch") ? this.scrollWatcherRun() : null;
+  }
+  // Оновлюємо конструктор
+  scrollWatcherUpdate() {
+    this.scrollWatcherRun();
+  }
+  // Запускаємо конструктор
+  scrollWatcherRun() {
+    document.documentElement.setAttribute("data-fls-watch", "");
+    this.scrollWatcherConstructor(document.querySelectorAll("[data-fls-watcher]"));
+  }
+  // Конструктор спостерігачів
+  scrollWatcherConstructor(items) {
+    if (items.length) {
+      let uniqParams = uniqArray(Array.from(items).map(function(item) {
+        if (item.dataset.flsWatcher === "navigator" && !item.dataset.flsWatcherThreshold) {
+          let valueOfThreshold;
+          if (item.clientHeight > 2) {
+            valueOfThreshold = window.innerHeight / 2 / (item.clientHeight - 1);
+            if (valueOfThreshold > 1) {
+              valueOfThreshold = 1;
+            }
+          } else {
+            valueOfThreshold = 1;
+          }
+          item.setAttribute(
+            "data-fls-watcher-threshold",
+            valueOfThreshold.toFixed(2)
+          );
+        }
+        return `${item.dataset.flsWatcherRoot ? item.dataset.flsWatcherRoot : null}|${item.dataset.flsWatcherMargin ? item.dataset.flsWatcherMargin : "0px"}|${item.dataset.flsWatcherThreshold ? item.dataset.flsWatcherThreshold : 0}`;
+      }));
+      uniqParams.forEach((uniqParam) => {
+        let uniqParamArray = uniqParam.split("|");
+        let paramsWatch = {
+          root: uniqParamArray[0],
+          margin: uniqParamArray[1],
+          threshold: uniqParamArray[2]
+        };
+        let groupItems = Array.from(items).filter(function(item) {
+          let watchRoot = item.dataset.flsWatcherRoot ? item.dataset.flsWatcherRoot : null;
+          let watchMargin = item.dataset.flsWatcherMargin ? item.dataset.flsWatcherMargin : "0px";
+          let watchThreshold = item.dataset.flsWatcherThreshold ? item.dataset.flsWatcherThreshold : 0;
+          if (String(watchRoot) === paramsWatch.root && String(watchMargin) === paramsWatch.margin && String(watchThreshold) === paramsWatch.threshold) {
+            return item;
+          }
+        });
+        let configWatcher = this.getScrollWatcherConfig(paramsWatch);
+        this.scrollWatcherInit(groupItems, configWatcher);
+      });
+    }
+  }
+  // Функція створення налаштувань
+  getScrollWatcherConfig(paramsWatch) {
+    let configWatcher = {};
+    if (document.querySelector(paramsWatch.root)) {
+      configWatcher.root = document.querySelector(paramsWatch.root);
+    } else if (paramsWatch.root !== "null") ;
+    configWatcher.rootMargin = paramsWatch.margin;
+    if (paramsWatch.margin.indexOf("px") < 0 && paramsWatch.margin.indexOf("%") < 0) {
+      return;
+    }
+    if (paramsWatch.threshold === "prx") {
+      paramsWatch.threshold = [];
+      for (let i = 0; i <= 1; i += 5e-3) {
+        paramsWatch.threshold.push(i);
+      }
+    } else {
+      paramsWatch.threshold = paramsWatch.threshold.split(",");
+    }
+    configWatcher.threshold = paramsWatch.threshold;
+    return configWatcher;
+  }
+  // Функція створення нового спостерігача зі своїми налаштуваннями
+  scrollWatcherCreate(configWatcher) {
+    this.observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        this.scrollWatcherCallback(entry, observer);
+      });
+    }, configWatcher);
+  }
+  // Функція ініціалізації спостерігача зі своїми налаштуваннями
+  scrollWatcherInit(items, configWatcher) {
+    this.scrollWatcherCreate(configWatcher);
+    items.forEach((item) => this.observer.observe(item));
+  }
+  // Функція обробки базових дій точок спрацьовування
+  scrollWatcherIntersecting(entry, targetElement) {
+    if (entry.isIntersecting) {
+      !targetElement.classList.contains("--watcher-view") ? targetElement.classList.add("--watcher-view") : null;
+    } else {
+      targetElement.classList.contains("--watcher-view") ? targetElement.classList.remove("--watcher-view") : null;
+    }
+  }
+  // Функція відключення стеження за об'єктом
+  scrollWatcherOff(targetElement, observer) {
+    observer.unobserve(targetElement);
+  }
+  // Функція обробки спостереження
+  scrollWatcherCallback(entry, observer) {
+    const targetElement = entry.target;
+    this.scrollWatcherIntersecting(entry, targetElement);
+    targetElement.hasAttribute("data-fls-watcher-once") && entry.isIntersecting ? this.scrollWatcherOff(targetElement, observer) : null;
+    document.dispatchEvent(new CustomEvent("watcherCallback", {
+      detail: {
+        entry
+      }
+    }));
+  }
+}
+document.querySelector("[data-fls-watcher]") ? window.addEventListener("load", () => new ScrollWatcher({})) : null;
+function pageNavigation() {
+  document.addEventListener("click", pageNavigationAction);
+  document.addEventListener("watcherCallback", pageNavigationAction);
+  function pageNavigationAction(e) {
+    if (e.type === "click") {
+      const targetElement = e.target;
+      if (targetElement.closest("[data-fls-scrollto]")) {
+        const gotoLink = targetElement.closest("[data-fls-scrollto]");
+        const gotoLinkSelector = gotoLink.dataset.flsScrollto ? gotoLink.dataset.flsScrollto : "";
+        const noHeader = gotoLink.hasAttribute("data-fls-scrollto-header") ? true : false;
+        const gotoSpeed = gotoLink.dataset.flsScrolltoSpeed ? gotoLink.dataset.flsScrolltoSpeed : 500;
+        const offsetTop = gotoLink.dataset.flsScrolltoTop ? parseInt(gotoLink.dataset.flsScrolltoTop) : 0;
+        if (window.fullpage) {
+          const fullpageSection = document.querySelector(`${gotoLinkSelector}`).closest("[data-fls-fullpage-section]");
+          const fullpageSectionId = fullpageSection ? +fullpageSection.dataset.flsFullpageId : null;
+          if (fullpageSectionId !== null) {
+            window.fullpage.switchingSection(fullpageSectionId);
+            if (document.documentElement.hasAttribute("data-fls-menu-open")) {
+              bodyUnlock();
+              document.documentElement.removeAttribute("data-fls-menu-open");
+            }
+          }
+        } else {
+          gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+        }
+        e.preventDefault();
+      }
+    } else if (e.type === "watcherCallback" && e.detail) {
+      const entry = e.detail.entry;
+      const targetElement = entry.target;
+      if (targetElement.dataset.flsWatcher === "navigator") {
+        document.querySelector(`[data-fls-scrollto].--navigator-active`);
+        let navigatorCurrentItem;
+        if (targetElement.id && document.querySelector(`[data-fls-scrollto="#${targetElement.id}"]`)) {
+          navigatorCurrentItem = document.querySelector(`[data-fls-scrollto="#${targetElement.id}"]`);
+        } else if (targetElement.classList.length) {
+          for (let index = 0; index < targetElement.classList.length; index++) {
+            const element = targetElement.classList[index];
+            if (document.querySelector(`[data-fls-scrollto=".${element}"]`)) {
+              navigatorCurrentItem = document.querySelector(`[data-fls-scrollto=".${element}"]`);
+              break;
+            }
+          }
+        }
+        if (entry.isIntersecting) {
+          navigatorCurrentItem ? navigatorCurrentItem.classList.add("--navigator-active") : null;
+        } else {
+          navigatorCurrentItem ? navigatorCurrentItem.classList.remove("--navigator-active") : null;
+        }
+      }
+    }
+  }
+  if (getHash()) {
+    let goToHash;
+    if (document.querySelector(`#${getHash()}`)) {
+      goToHash = `#${getHash()}`;
+    } else if (document.querySelector(`.${getHash()}`)) {
+      goToHash = `.${getHash()}`;
+    }
+    goToHash ? gotoBlock(goToHash) : null;
+  }
+}
+document.querySelector("[data-fls-scrollto]") ? window.addEventListener("load", pageNavigation) : null;
