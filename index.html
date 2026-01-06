@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>Home Page</title>
-		<script type="module" crossorigin="" src="./js/index.min.js?v=1767636634180"></script>
-		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1767636634180">
-		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1767636634180">
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1767692271403"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1767692271403">
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1767692271403">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -27,19 +27,6 @@
 							</a>
 							<a href="tel:+380996384537" class="contact__tel">+38 (099)-638-50-00</a>
 						</div>
-						<!--
-<div class="contact__social social">
-<a href="#" class="social__pic">
-<img src="@img/telegram.svg" alt="telegram">
-</a>
-<a href="#" class="social__pic">
-<img src="@img/viber.svg" alt="viber">
-</a>
-<a href="#" class="social__pic">
-<img src="@img/instagram.svg" alt="instagram">
-</a>
-</div>
--->
 					</div>
 				</div>
 				<div class="header__main-block">
@@ -47,20 +34,32 @@
 						<div class="header__logo">
 							<img src="./assets/img/logo.svg" alt="logo">
 						</div>
-						<div class="contact__container contact__container--none">
-							<div class="contact__item">
-								<a class="contact__tel-icon" href="tel:+380996384537">
-									<img src="./assets/img/tel.svg" alt="icon-tel">
-								</a>
-								<a href="tel:+380996384537" class="contact__tel">+38 (099)-638-45-37</a>
-							</div>
-							<div class="contact__item">
-								<a class="contact__tel-icon" href="tel:+380996384537">
-									<img src="./assets/img/tel.svg" alt="icon-tel">
-								</a>
-								<a href="tel:+380996384537" class="contact__tel">+38 (099)-638-50-00</a>
+						<div class="header__contact contact">
+							<div class="contact__container contact__container--none">
+								<div class="contact__item">
+									<a class="contact__tel-icon" href="tel:+380996384537">
+										<img src="./assets/img/tel.svg" alt="icon-tel">
+									</a>
+									<a href="tel:+380996384537" class="contact__tel">+38 (099)-638-45-37</a>
+								</div>
+								<div class="contact__item">
+									<a class="contact__tel-icon" href="tel:+380996384537">
+										<img src="./assets/img/tel.svg" alt="icon-tel">
+									</a>
+									<a href="tel:+380996384537" class="contact__tel">+38 (099)-638-50-00</a>
+								</div>
 							</div>
 						</div>
+						<!--
+<div data-fls-spollers class="header__spollers spollers">
+<details class="spollers__item">
+<summary class="spollers__title">
+<img src="@img/tel.svg" alt="icon-tel">
+</summary>
+<div class="spollers__body">Контент спойлера</div>
+</details>
+</div>
+-->
 						<div class="header__menu menu">
 							<button type="button" data-fls-menu="" class="menu__icon icon-menu">
 								<span></span>
@@ -134,7 +133,11 @@
 								<div class="hero__wrapper swiper-wrapper">
 									<!-- Слайд -->
 									<div class="hero__slide swiper-slide">
-										<img src="assets/img/mainSlider/item1.jpg" alt="Image">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/3-600.webp" type="image/webp">
+											<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/3-1200.webp" type="image/webp">
+											<img alt="" src="./assets/img/mainSlider/3.webp">
+										</picture>
 									</div>
 									<div class="hero__slide swiper-slide">
 										<picture>
@@ -355,10 +358,10 @@
 							<a href="#" class="footer__link">Доставка</a>
 						</li>
 						<li class="footer__item">
-							<a href="#" class="footer__link">Гарантії</a>
+							<a href="#" class="footer__link">Контакти</a>
 						</li>
 						<li class="footer__item">
-							<a href="#" class="footer__link">Контакти</a>
+							<a href="#" class="footer__link">Гарантії</a>
 						</li>
 						<li class="footer__item">
 							<a href="#" class="footer__link">Дилерам</a>
