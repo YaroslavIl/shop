@@ -115,9 +115,6 @@ let bodyLock = (delay = 500) => {
     }, delay);
   }
 };
-function uniqArray(array) {
-  return array.filter((item, index, self) => self.indexOf(item) === index);
-}
 function dataMediaQueries(array, dataSetValue) {
   const media = Array.from(array).filter((item) => item.dataset[dataSetValue]).map((item) => {
     const [value, type = "max"] = item.dataset[dataSetValue].split(",");
@@ -175,6 +172,5 @@ export {
   bodyLockToggle as f,
   gotoBlock as g,
   getHash as h,
-  slideToggle as s,
-  uniqArray as u
+  slideToggle as s
 };

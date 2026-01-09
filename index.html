@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>Home Page</title>
-		<script type="module" crossorigin="" src="./js/index.min.js?v=1767963070012"></script>
-		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1767963070012">
-		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1767963070012">
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1767977845935"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1767977845935">
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1767977845935">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -64,7 +64,6 @@
 							<button type="button" data-fls-menu="" class="menu__icon icon-menu">
 								<span></span>
 							</button>
-							<!-- <include src="@components/custom/popupdelivery/popupdelivery.html"></include> -->
 							<nav class="menu__body">
 								<ul class="menu__list">
 									<li class="menu__item">
@@ -194,40 +193,41 @@
 							</div>
 						</div>
 					</div>
-					<div class="index__container">
-						<div class="index__hero hero">
-							<!-- Оболонка слайдера -->
-							<div data-fls-slider="" class="hero__slider swiper">
-								<!-- Частина слайдера, що рухається -->
-								<div class="hero__wrapper swiper-wrapper">
-									<!-- Слайд -->
-									<div class="hero__slide swiper-slide">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/3-600.webp" type="image/webp">
-											<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/3-1200.webp" type="image/webp">
-											<img alt="диван" src="./assets/img/mainSlider/3.webp">
-										</picture>
-									</div>
-									<div class="hero__slide swiper-slide">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/2-600.webp" type="image/webp">
-											<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/2-1200.webp" type="image/webp">
-											<img alt="диван" src="./assets/img/mainSlider/2.webp">
-										</picture>
-									</div>
-									<div class="hero__slide swiper-slide">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/1-600.webp" type="image/webp">
-											<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/1-1200.webp" type="image/webp">
-											<img alt="диван" src="./assets/img/mainSlider/1.webp">
-										</picture>
-									</div>
+					<!-- <div class="index__container"> -->
+					<div class="index__hero hero">
+						<!-- Оболонка слайдера -->
+						<div data-fls-slider="" class="hero__slider swiper">
+							<!-- Частина слайдера, що рухається -->
+							<div class="hero__wrapper swiper-wrapper">
+								<!-- Слайд -->
+								<div class="hero__slide swiper-slide">
+									<picture>
+										<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/3-600.webp" type="image/webp">
+										<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/3-1200.webp" type="image/webp">
+										<img alt="диван" src="./assets/img/mainSlider/3.webp">
+									</picture>
 								</div>
-								<button type="button" class="swiper-button-prev hero__button-prev"></button>
-								<button type="button" class="swiper-button-next hero__button-next"></button>
+								<div class="hero__slide swiper-slide">
+									<picture>
+										<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/2-600.webp" type="image/webp">
+										<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/2-1200.webp" type="image/webp">
+										<img alt="диван" src="./assets/img/mainSlider/2.webp">
+									</picture>
+								</div>
+								<div class="hero__slide swiper-slide">
+									<picture>
+										<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/1-600.webp" type="image/webp">
+										<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/1-1200.webp" type="image/webp">
+										<img alt="диван" src="./assets/img/mainSlider/1.webp">
+									</picture>
+								</div>
 							</div>
+							<button type="button" class="swiper-button-prev hero__button-prev"></button>
+							<button type="button" class="swiper-button-next hero__button-next"></button>
 						</div>
-						<section class="index__catalog catalog" data-fls-watcher="navigator">
+					</div>
+					<div class="index__container">
+						<section class="index__catalog catalog">
 							<h2 class="catalog__title">Каталог</h2>
 							<div class="catalog__grid">
 								<article class="catalog__card card">
