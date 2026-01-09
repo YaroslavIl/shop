@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>Home Page</title>
-		<script type="module" crossorigin="" src="./js/index.min.js?v=1767962408472"></script>
-		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1767962408472">
-		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1767962408472">
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1767963070012"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1767963070012">
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1767963070012">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -71,7 +71,7 @@
 										<a href="#" class="menu__link">Головна</a>
 									</li>
 									<li class="menu__item">
-										<a href="#" class="menu__link">Каталог</a>
+										<a href="#" class="menu__link" data-fls-scrollto-header="" data-fls-scrollto=".catalog">Каталог</a>
 									</li>
 									<li class="menu__item">
 										<a href="" class="menu__link">Тканини</a>
@@ -86,7 +86,7 @@
 										<a href="" class="menu__link" data-fls-popup-link="guarantee">Гарантії</a>
 									</li>
 									<li class="menu__item">
-										<a href="" class="menu__link">Контакти</a>
+										<a href="" class="menu__link" data-fls-scrollto=".address">Контакти</a>
 									</li>
 									<li class="menu__item">
 										<a href="" class="menu__link" data-fls-popup-link="dealers">Дилерам</a>
@@ -107,11 +107,6 @@
 			<div class="header-spacer"></div>
 			<main class="page">
 				<div data-fls-index="" class="index">
-					<!--
-<button type="button" class="btn-up">
-<img src="@img/logo.svg" alt="Image">
-</button>
--->
 					<div data-fls-popup="popup" aria-hidden="true" class="popup">
 						<div data-fls-popup-wrapper="" class="popup__wrapper">
 							<div data-fls-popup-body="" class="popup__body">
@@ -199,20 +194,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- <include src="@components/custom/popupdelivery/popupdelivery.html"></include> -->
-					<!--
-<div class="index__social social">
-<a href="#" class="social__pic">
-<img src="@img/telegram.svg" alt="telegram">
-</a>
-<a href="#" class="social__pic">
-<img src="@img/viber.svg" alt="viber">
-</a>
-<a href="#" class="social__pic">
-<img src="@img/instagram.svg" alt="instagram">
-</a>
-</div>
--->
 					<div class="index__container">
 						<div class="index__hero hero">
 							<!-- Оболонка слайдера -->
@@ -451,7 +432,7 @@
 			</main>
 			<footer data-fls-footer="" class="footer">
 				<div class="footer__container">
-					<section class="footer__address address" data-fls-watcher="navigator">
+					<section class="footer__address address">
 						<h2 class="address__title">Наші контакти</h2>
 						<div class="address__box">
 							<div class="address__info">
