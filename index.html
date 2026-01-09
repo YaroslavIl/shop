@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>Home Page</title>
-		<script type="module" crossorigin="" src="./js/index.min.js?v=1767718548697"></script>
-		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1767718548697">
-		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1767718548697">
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1767958204830"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1767958204830">
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1767958204830">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -130,17 +130,37 @@
 							</div>
 						</div>
 					</div>
-					<div class="index__social social">
-						<a href="#" class="social__pic">
-							<img src="./assets/img/telegram.svg" alt="telegram">
-						</a>
-						<a href="#" class="social__pic">
-							<img src="./assets/img/viber.svg" alt="viber">
-						</a>
-						<a href="#" class="social__pic">
-							<img src="./assets/img/instagram.svg" alt="instagram">
-						</a>
-					</div>
+					<section data-fls-popupdelivery="" class="popupdelivery">
+						<div data-fls-popup="delivery" aria-hidden="true" class="popup">
+							<div data-fls-popup-wrapper="" class="popup__wrapper">
+								<div data-fls-popup-body="" class="popup__body">
+									<button data-fls-popup-close="" type="button" class="popup__close">
+										<svg width="23" height="23" viewbox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path opacity="0.850056" d="M1.73333 1.48883L21.5469 21.0288" stroke="#979797" stroke-linecap="square"></path>
+											<path opacity="0.850056" d="M21.2667 1.48883L1.45309 21.0288" stroke="#979797" stroke-linecap="square"></path>
+										</svg>
+									</button>
+									<div data-fls-popup-content="" class="popup__text">
+										<!-- Контент -->
+										Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio obcaecati dolores architecto doloremque, cumque, adipisci illo beatae officia inventore minus sequi. Officiis consequatur magnam ipsa, inventore saepe qui alias rem.
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!--
+<div class="index__social social">
+<a href="#" class="social__pic">
+<img src="@img/telegram.svg" alt="telegram">
+</a>
+<a href="#" class="social__pic">
+<img src="@img/viber.svg" alt="viber">
+</a>
+<a href="#" class="social__pic">
+<img src="@img/instagram.svg" alt="instagram">
+</a>
+</div>
+-->
 					<div class="index__container">
 						<div class="index__hero hero">
 							<!-- Оболонка слайдера -->
@@ -374,8 +394,14 @@
 								</article>
 							</div>
 						</section>
-						<section class="index__address address" data-fls-watcher="navigator">
-							<h2 class="address__title">Наші контакти</h2>
+					</div>
+				</div>
+			</main>
+			<footer data-fls-footer="" class="footer">
+				<div class="footer__container">
+					<section class="footer__address address" data-fls-watcher="navigator">
+						<h2 class="address__title">Наші контакти</h2>
+						<div class="address__box">
 							<div class="address__info">
 								<p class="address__hours">
 									<time>Пн-Пт 10:00-20:00</time>
@@ -383,48 +409,31 @@
 								</p>
 								<address class="address__location">03134, Україна, м. Київ, вул. Григоровича Барського, 1 ТЦ СОВА</address>
 							</div>
-							<!--
-<div data-fls-map class="address__map map">
-<div data-fls-map-marker class="map__marker" data-fls-map-lat="50.449688" data-fls-map-lng="30.52348" data-fls-map-title="Title 1"></div>
-<div data-fls-map-body class="map__body" data-fls-map-lat="50.449688" data-fls-map-lng="30.52348"></div>
-</div>
--->
-						</section>
-					</div>
-				</div>
-			</main>
-			<footer data-fls-footer="" class="footer">
-				<div class="footer__container">
-					<!--
-<div class="footer__logo">
-<img src="@img/logo.svg" alt="logo">
-</div>
--->
-					<ul class="footer__list">
-						<li class="footer__item">
-							<a href="#" class="footer__link">Доставка</a>
-						</li>
-						<li class="footer__item">
-							<a href="#" class="footer__link">Контакти</a>
-						</li>
-						<li class="footer__item">
-							<a href="#" class="footer__link">Гарантії</a>
-						</li>
-						<li class="footer__item">
-							<a href="#" class="footer__link" data-fls-popup-link="popup">Дилерам</a>
-						</li>
-					</ul>
-					<div class="footer__social social">
-						<a href="#" class="social__pic">
-							<img src="./assets/img/telegram.svg" alt="telegram">
-						</a>
-						<a href="#" class="social__pic">
-							<img src="./assets/img/viber.svg" alt="viber">
-						</a>
-						<a href="#" class="social__pic">
-							<img src="./assets/img/instagram.svg" alt="instagram">
-						</a>
-					</div>
+							<div class="address__social social">
+								<h3 class="social__title">Ми в соц. мережах:</h3>
+								<ul class="social__list">
+									<li>
+										<a href="#" class="social__pic">
+											<img src="./assets/img/telegram.svg" alt="telegram">
+										</a>
+									</li>
+									<li>
+										<a href="#" class="social__pic">
+											<img src="./assets/img/viber.svg" alt="viber">
+										</a>
+									</li>
+									<li>
+										<a href="#" class="social__pic">
+											<img src="./assets/img/instagram.svg" alt="instagram">
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="address__map">
+							<iframe src="https://www.google.com/maps?q=50.449688,30.523483&output=embed" width="100%" height="400" style="border:0; border-radius: 12px;" allowfullscreen loading="lazy"></iframe>
+						</div>
+					</section>
 				</div>
 			</footer>
 		</div>
