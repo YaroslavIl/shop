@@ -1,20 +1,5 @@
 import "./main.min.js";
 import "./common.min.js";
-const __vite_glob_0_0 = "" + new URL("../assets/img/mainSlider/1.jpg", import.meta.url).href;
-const __vite_glob_0_1 = "" + new URL("../assets/img/mainSlider/10.jpg", import.meta.url).href;
-const __vite_glob_0_2 = "" + new URL("../assets/img/mainSlider/11.jpg", import.meta.url).href;
-const __vite_glob_0_3 = "" + new URL("../assets/img/mainSlider/12.jpg", import.meta.url).href;
-const __vite_glob_0_4 = "" + new URL("../assets/img/mainSlider/13.jpg", import.meta.url).href;
-const __vite_glob_0_5 = "" + new URL("../assets/img/mainSlider/2.jpg", import.meta.url).href;
-const __vite_glob_0_6 = "" + new URL("../assets/img/mainSlider/3.jpg", import.meta.url).href;
-const __vite_glob_0_7 = "" + new URL("../assets/img/mainSlider/4.jpg", import.meta.url).href;
-const __vite_glob_0_8 = "" + new URL("../assets/img/mainSlider/5.jpg", import.meta.url).href;
-const __vite_glob_0_9 = "" + new URL("../assets/img/mainSlider/6.jpg", import.meta.url).href;
-const __vite_glob_0_10 = "" + new URL("../assets/img/mainSlider/7.jpg", import.meta.url).href;
-const __vite_glob_0_11 = "" + new URL("../assets/img/mainSlider/8.jpg", import.meta.url).href;
-const __vite_glob_0_12 = "" + new URL("../assets/img/mainSlider/9.jpg", import.meta.url).href;
-const __vite_glob_0_13 = "" + new URL("../assets/img/mainSlider/photo_2026-01-06_11-53-42.jpg", import.meta.url).href;
-const __vite_glob_0_14 = "" + new URL("../assets/img/mainSlider/photo_2026-01-06_11-53-51.jpg", import.meta.url).href;
 var __assign = function() {
   __assign = Object.assign || function __assign2(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -2389,7 +2374,9 @@ const KEY = "7EC452A9-0CFD441C-BD984C7C-17C8456E";
 const urlParams = new URLSearchParams(window.location.search);
 const productId = parseInt(urlParams.get("id"));
 const getImagePath = (imageName) => {
-  return new URL((/* @__PURE__ */ Object.assign({ "../../../assets/img/mainSlider/1.jpg": __vite_glob_0_0, "../../../assets/img/mainSlider/10.jpg": __vite_glob_0_1, "../../../assets/img/mainSlider/11.jpg": __vite_glob_0_2, "../../../assets/img/mainSlider/12.jpg": __vite_glob_0_3, "../../../assets/img/mainSlider/13.jpg": __vite_glob_0_4, "../../../assets/img/mainSlider/2.jpg": __vite_glob_0_5, "../../../assets/img/mainSlider/3.jpg": __vite_glob_0_6, "../../../assets/img/mainSlider/4.jpg": __vite_glob_0_7, "../../../assets/img/mainSlider/5.jpg": __vite_glob_0_8, "../../../assets/img/mainSlider/6.jpg": __vite_glob_0_9, "../../../assets/img/mainSlider/7.jpg": __vite_glob_0_10, "../../../assets/img/mainSlider/8.jpg": __vite_glob_0_11, "../../../assets/img/mainSlider/9.jpg": __vite_glob_0_12, "../../../assets/img/mainSlider/photo_2026-01-06_11-53-42.jpg": __vite_glob_0_13, "../../../assets/img/mainSlider/photo_2026-01-06_11-53-51.jpg": __vite_glob_0_14 }))[`../../../assets/img/mainSlider/${imageName}`], import.meta.url).href;
+  {
+    return `/assets/img/mainSlider/${imageName}`;
+  }
 };
 async function loadProduct() {
   try {
