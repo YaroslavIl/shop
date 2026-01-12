@@ -5,10 +5,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>product</title>
-		<link rel="modulepreload" crossorigin href="./js/common.min.js?v=1767982733198">
-		<script type="module" crossorigin="" src="./js/main.min.js?v=1767982733198"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/main.min.css?v=1767982733198">
-		<link rel="stylesheet" crossorigin="" href="./css/product.min.css?v=1767982733198">
+		<script type="module" crossorigin="" src="./js/product.min.js?v=1768246324536"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1768246324536">
+		<link rel="modulepreload" crossorigin="" href="./js/main.min.js?v=1768246324536">
+		<link rel="stylesheet" crossorigin="" href="./css/main.min.css?v=1768246324536">
+		<link rel="stylesheet" crossorigin="" href="./css/product.min.css?v=1768246324536">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -68,7 +69,7 @@
 							<nav class="menu__body">
 								<ul class="menu__list">
 									<li class="menu__item">
-										<a href="#" class="menu__link">Головна</a>
+										<a href="index.html" class="menu__link">Головна</a>
 									</li>
 									<li class="menu__item">
 										<a href="#" class="menu__link" data-fls-scrollto-header="" data-fls-scrollto=".catalog">Каталог</a>
@@ -106,7 +107,36 @@
 			</header>
 			<div class="header-spacer"></div>
 			<main class="page">
-				<div data-fls-product="" class="product"></div>
+				<div data-fls-product="" class="product">
+					<section class="product__container">
+						<!-- Галерея -->
+						<div data-fls-gallery="" class="product__gallery gallery">
+							<div class="gallery__main">
+								<img src="" alt="" class="gallery__main-img" id="mainImage">
+							</div>
+							<picture>
+								<source media="(max-width: 600px)" srcset="./assets/img/mainSlider/7-600.webp" type="image/webp">
+								<source media="(max-width: 1200px)" srcset="./assets/img/mainSlider/7-1200.webp" type="image/webp">
+								<img data-external-thumb-image="assets/img/mainSlider/7.jpg" alt="Image" src="./assets/img/mainSlider/7.webp">
+							</picture>
+							<div class="gallery__thumbs" id="thumbs"><!-- Мініатюри будуть тут --></div>
+						</div>
+						<div class="product__info">
+							<h1 class="product__title" id="productTitle">Назва товару</h1>
+							<p class="product__price" id="productPrice">
+								<data value="">0 грн</data>
+							</p>
+							<p class="product__description" id="productDescription">Опис товару</p>
+							<dl class="product__features" id="productFeatures">
+								<!-- Характеристики -->
+								<div>
+									<dt></dt>
+									<dd></dd>
+								</div>
+							</dl>
+						</div>
+					</section>
+				</div>
 			</main>
 			<footer data-fls-footer="" class="footer">
 				<div class="footer__container">
