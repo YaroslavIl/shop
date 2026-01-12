@@ -4,6 +4,17 @@
   justify-content: space-between;
   align-items: center;
   gap: 1.25rem;
+}
+
+.gallery__thumbs {
+  display: flex;
+}
+.gallery__thumbs a {
+  max-width: 12.5rem;
+}
+.gallery__thumbs img {
+  width: 100%;
+  height: 100%;
 }@font-face {
 	font-family: "lg";
 	src: url("../assets/fonts/lg.woff2?io9a6k") format("woff2");
@@ -725,4 +736,94 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
 	bottom: 0;
 	right: 0;
 	left: 0;
+}
+.lg-outer .lg-thumb-outer {
+	background-color: #0d0a0a;
+	width: 100%;
+	max-height: 21.875rem;
+	overflow: hidden;
+	float: left;
+}
+.lg-outer .lg-thumb-outer.lg-grab .lg-thumb-item {
+	cursor: -webkit-grab;
+	cursor: -moz-grab;
+	cursor: -o-grab;
+	cursor: -ms-grab;
+	cursor: grab;
+}
+.lg-outer .lg-thumb-outer.lg-grabbing .lg-thumb-item {
+	cursor: move;
+	cursor: -webkit-grabbing;
+	cursor: -moz-grabbing;
+	cursor: -o-grabbing;
+	cursor: -ms-grabbing;
+	cursor: grabbing;
+}
+.lg-outer .lg-thumb-outer.lg-dragging .lg-thumb {
+	-webkit-transition-duration: 0s !important;
+	transition-duration: 0s !important;
+}
+.lg-outer .lg-thumb-outer.lg-rebuilding-thumbnails .lg-thumb {
+	-webkit-transition-duration: 0s !important;
+	transition-duration: 0s !important;
+}
+.lg-outer .lg-thumb-outer.lg-thumb-align-middle {
+	text-align: center;
+}
+.lg-outer .lg-thumb-outer.lg-thumb-align-left {
+	text-align: left;
+}
+.lg-outer .lg-thumb-outer.lg-thumb-align-right {
+	text-align: right;
+}
+.lg-outer.lg-single-item .lg-thumb-outer {
+	display: none;
+}
+.lg-outer .lg-thumb {
+	padding: 0.3125rem 0;
+	height: 100%;
+	margin-bottom: -0.3125rem;
+	display: inline-block;
+	vertical-align: middle;
+}
+.lg-outer .lg-thumb-item {
+	cursor: pointer;
+	float: left;
+	overflow: hidden;
+	height: 100%;
+	border-radius: 0.125rem;
+	margin-bottom: 0.3125rem;
+	will-change: border-color;
+}
+.lg-outer .lg-thumb-item.active,
+.lg-outer .lg-thumb-item:hover {
+	border-color: rgb(169, 7, 7);
+}
+.lg-outer .lg-thumb-item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+.lg-outer.lg-can-toggle .lg-item {
+	padding-bottom: 0;
+}
+.lg-outer .lg-toggle-thumb:after {
+	content: "\e1ff";
+}
+.lg-outer.lg-animate-thumb .lg-thumb {
+	-webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+@media (min-width: 48rem) {
+	.lg-outer .lg-thumb {
+		padding: 0.625rem 0;
+	}
+	.lg-outer .lg-thumb-item {
+		border-radius: 0.25rem;
+		border: 0.125rem solid #fff;
+		-webkit-transition: border-color 0.25s ease;
+		-o-transition: border-color 0.25s ease;
+		transition: border-color 0.25s ease;
+	}
 }
