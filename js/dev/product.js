@@ -2395,7 +2395,7 @@ async function loadProduct() {
             <data value="${product.price}">${product.price.toLocaleString("uk-UA")} грн</data>
         `;
     document.getElementById("productDescription").textContent = product.description;
-    const featuresList = document.getElementById("productFeatures");
+    const featuresList = document.getElementById("characteristicFeatures");
     featuresList.innerHTML = product.features.map((feature) => `
             <div>
                 <dt>${feature.name}</dt>

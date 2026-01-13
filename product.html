@@ -5,11 +5,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="./assets/img/favicon.ico">
 		<title>product</title>
-		<script type="module" crossorigin="" src="./js/product.min.js?v=1768291493131"></script>
-		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1768291493131">
-		<link rel="modulepreload" crossorigin="" href="./js/main.min.js?v=1768291493131">
-		<link rel="stylesheet" crossorigin="" href="./css/main.min.css?v=1768291493131">
-		<link rel="stylesheet" crossorigin="" href="./css/product.min.css?v=1768291493131">
+		<script type="module" crossorigin="" src="./js/product.min.js?v=1768327658915"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/common.min.js?v=1768327658915">
+		<link rel="modulepreload" crossorigin="" href="./js/main.min.js?v=1768327658915">
+		<link rel="stylesheet" crossorigin="" href="./css/main.min.css?v=1768327658915">
+		<link rel="stylesheet" crossorigin="" href="./css/product.min.css?v=1768327658915">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -121,14 +121,25 @@
 							<p class="product__price" id="productPrice">
 								<data value="">0 грн</data>
 							</p>
-							<p class="product__description" id="productDescription">Опис товару</p>
-							<dl class="product__features" id="productFeatures">
-								<!-- Характеристики -->
-								<div>
-									<dt></dt>
-									<dd></dd>
-								</div>
-							</dl>
+							<!-- <p class="product__description" id="productDescription"> Опис товару </p> -->
+							<section class="product__characteristic characteristic">
+								<h3 class="characteristic__title">Характеристики:</h3>
+								<dl class="characteristic__features" id="characteristicFeatures">
+									<!-- Характеристики -->
+									<!--
+<div>
+<dt></dt>
+<dd></dd>
+</div>
+-->
+								</dl>
+							</section>
+							<div data-fls-spollers="" class="product__spollers spollers">
+								<details class="spollers__item">
+									<summary class="spollers__title">Опис товару</summary>
+									<div class="spollers__body" id="productDescription">Контент спойлера</div>
+								</details>
+							</div>
 						</div>
 					</section>
 				</div>
