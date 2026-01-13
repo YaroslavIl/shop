@@ -2380,6 +2380,19 @@ const getImagePath = (imageName) => {
 };
 async function loadProduct() {
   try {
+    let switchToThumb = function(index) {
+      const thumbs = document.querySelectorAll(".gallery__thumb");
+      if (thumbs[index]) {
+        thumbs.forEach((t) => t.classList.remove("active"));
+        thumbs[index].classList.add("active");
+        mainImage.src = thumbs[index].dataset.src;
+        thumbs[index].scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center"
+        });
+      }
+    };
     const response = await fetch("./files/products.json");
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -2408,48 +2421,66 @@ async function loadProduct() {
     mainImage.alt = product.name;
     const thumbsContainer = document.getElementById("thumbs");
     thumbsContainer.innerHTML = product.gallery.map((img, index) => {
-      const fullImagePath = getImagePath(img);
+      const src = getImagePath(img);
       return `
-        <a href="${fullImagePath}" 
-           class="gallery__thumb ${index === 0 ? "active" : ""}"
-           data-index="${index}"
-           data-src="${fullImagePath}"
-           data-lg-size="1600-1067">
-            <img src="${fullImagePath}" 
-                 alt="${product.name}">
-        </a>
+        <button 
+            type="button"
+            class="gallery__thumb ${index === 0 ? "active" : ""}"
+            data-index="${index}"
+            data-src="${src}"
+            aria-label="Переглянути зображення ${index + 1}">
+            <img src="${src}" alt="${product.name}">
+        </button>
     `;
     }).join("");
+    const prevArrow = document.getElementById("prevArrow");
+    const nextArrow = document.getElementById("nextArrow");
+    if (prevArrow && nextArrow) {
+      prevArrow.addEventListener("click", () => {
+        const activeThumb = document.querySelector(".gallery__thumb.active");
+        const currentIndex = parseInt(activeThumb.dataset.index);
+        const newIndex = currentIndex > 0 ? currentIndex - 1 : product.gallery.length - 1;
+        switchToThumb(newIndex);
+      });
+      nextArrow.addEventListener("click", () => {
+        const activeThumb = document.querySelector(".gallery__thumb.active");
+        const currentIndex = parseInt(activeThumb.dataset.index);
+        const newIndex = currentIndex < product.gallery.length - 1 ? currentIndex + 1 : 0;
+        switchToThumb(newIndex);
+      });
+    }
     const galleryElement = document.querySelector("[data-fls-gallery]");
+    let lgInstance;
     if (galleryElement) {
-      if (window.lgInstance) {
-        window.lgInstance.destroy();
-      }
-      window.lgInstance = lightGallery(galleryElement, {
+      if (lgInstance) lgInstance.destroy();
+      lgInstance = lightGallery(galleryElement, {
         plugins: [lgThumbnail],
         licenseKey: KEY,
-        selector: ".gallery__thumb",
         speed: 500,
         thumbnail: true,
         animateThumb: true,
-        download: false
+        download: false,
+        dynamic: true,
+        dynamicEl: product.gallery.map((img) => {
+          const src = getImagePath(img);
+          return {
+            src,
+            thumb: src
+          };
+        })
       });
     }
     document.querySelectorAll(".gallery__thumb").forEach((thumb) => {
-      const img = thumb.querySelector("img");
-      img.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        document.querySelectorAll(".gallery__thumb").forEach((t) => t.classList.remove("active"));
-        thumb.classList.add("active");
-        mainImage.src = thumb.href;
+      thumb.addEventListener("click", () => {
+        const index = Number(thumb.dataset.index);
+        switchToThumb(index);
       });
     });
     mainImage.addEventListener("click", () => {
       const activeThumb = document.querySelector(".gallery__thumb.active");
-      const index = activeThumb ? parseInt(activeThumb.dataset.index) : 0;
-      if (window.lgInstance) {
-        window.lgInstance.openGallery(index);
+      const index = activeThumb ? Number(activeThumb.dataset.index) : 0;
+      if (lgInstance) {
+        lgInstance.openGallery(index);
       }
     });
   } catch (error) {
