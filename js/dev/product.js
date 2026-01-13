@@ -2375,7 +2375,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const productId = parseInt(urlParams.get("id"));
 const getImagePath = (imageName) => {
   {
-    return `/assets/img/mainSlider/${imageName}`;
+    return `./assets/img/mainSlider/${imageName}`;
   }
 };
 async function loadProduct() {
