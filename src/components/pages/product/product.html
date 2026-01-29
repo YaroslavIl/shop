@@ -1,0 +1,58 @@
+<div data-fls-product class="product">
+  <section class="product__container">
+
+    <!-- Галерея -->
+    <div data-fls-gallery class="product__gallery gallery">
+      <div class="gallery__main">
+        <img src="" alt="" class="gallery__main-img" id="mainImage">
+      </div>
+
+      <div class="gallery__slider">
+        <button class="gallery__arrow gallery__arrow--prev" id="prevArrow" aria-label="Попереднє зображення">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <div class="gallery__thumbs-wrapper">
+          <div class="gallery__thumbs" id="thumbs">
+            <!-- Мініатюри -->
+          </div>
+        </div>
+
+        <button class="gallery__arrow gallery__arrow--next" id="nextArrow" aria-label="Наступне зображення">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Інформація -->
+    <div class="product__info">
+      <div class="product__box">
+        <h1 class="product__title" id="productTitle">Назва товару</h1>
+        <p class="product__price" id="productPrice">
+          <data value="">0 грн</data>
+        </p>
+      </div>
+
+      <section class="product__characteristic characteristic">
+        <h3 class="characteristic__title">Характеристики:</h3>
+        <dl class="characteristic__features" id="characteristicFeatures">
+          <!-- характеристики -->
+        </dl>
+      </section>
+
+      <div data-fls-spollers class="product__spollers spollers">
+        <details class="spollers__item">
+          <summary class="spollers__title">Опис товару</summary>
+          <div class="spollers__body" id="productDescription"></div>
+        </details>
+      </div>
+    </div>
+
+  </section>
+</div>

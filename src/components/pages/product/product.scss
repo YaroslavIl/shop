@@ -1,0 +1,336 @@
+.product {
+    font-family: $otherFont;
+    // .product__container
+
+    &__container {}
+
+    // .product__gallery
+
+    &__gallery {
+        margin-bottom: 30px;
+    }
+
+    // .product__info
+
+    &__info {
+        // display: flex;
+    }
+
+    // .product__box
+
+    &__box{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+
+    // .product__title
+
+    &__title {
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    // .product__price
+
+    &__price {
+        font-size: 22px;
+    }
+
+    // .product__description
+
+    &__description {}
+
+    // .product__characteristic
+
+    &__characteristic {
+        margin-bottom: 30px;
+    }
+
+    // .product__spollers
+
+    &__spollers {}
+
+    @media (max-width: toEm(600)) {
+        .characteristic__features {
+
+            dd,
+            dt {
+                font-size: 13px;
+            }
+
+            dd {
+                flex-basis: 300px;
+            }
+        }
+
+        .spollers__title,
+        .characteristic__title,
+        .product__title {
+            font-size: 25px;
+        }
+
+        .product__price {
+            font-size: 18px;
+        }
+
+        .spollers__body {
+            font-size: 13px;
+            padding: 10px;
+        }
+    }
+}
+
+.gallery {
+
+    // .gallery__main
+
+    &__main {}
+
+    // .gallery__main-img
+
+    &__main-img {
+        border-radius: 12px;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 100%;
+    }
+
+    // .gallery__thumbs
+
+    &__thumbs {
+        display: flex;
+        gap: 10px;
+
+        a {
+            max-width: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.characteristic {
+
+    //.characteristic__features
+
+    &__features {
+
+        div {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+            padding-block: 10px;
+            border-bottom: solid 1px #dbdbdb;
+        }
+
+        dd {
+            font-size: 18px;
+            font-weight: 600;
+            flex-basis: 400px;
+            text-align: right;
+            line-height: 1.5;
+        }
+
+        dt {
+            font-size: 18px;
+        }
+    }
+
+    //.characteristic__title
+
+    &__title {
+        font-size: 30px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+}
+
+
+.spollers {
+
+    // .spollers__item
+
+    &__item {}
+
+    // .spollers__title
+
+    &__title {
+        font-size: 30px;
+        font-weight: 600;
+        background-color: white;
+    }
+
+    // .spollers__body
+
+    &__body {
+        background-color: white;
+        font-size: 18px;
+    }
+}
+
+//===================================================================================================
+.gallery {
+    &__slider {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 15px;
+        position: relative;
+    }
+
+    &__arrow {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.5);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        z-index: 2;
+
+        &:hover:not(:disabled) {
+            background: rgba(0, 0, 0, 0.7);
+            transform: scale(1.1);
+        }
+
+        &:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    &__thumbs-wrapper {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+    }
+
+    &__thumbs {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 5px 0;
+
+        // Приховуємо scrollbar
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        // Курсор при драгу
+        &.dragging {
+            cursor: grabbing;
+            scroll-behavior: auto;
+        }
+    }
+
+    &__thumb {
+        flex-shrink: 0;
+        width: 200px;
+        height: 150px;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: block;
+
+        &:hover {
+            border-color: rgba(0, 0, 0, 0.3);
+        }
+
+        &.active {
+            border-color: #000;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            // object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+    }
+
+    &__main {
+        width: 100%;
+        // height: 600px;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+}
+
+// Адаптив
+@media (max-width: toEm(900)) {
+    .gallery {
+        &__thumb {
+            width: 120px;
+            height: 80px;
+        }
+
+        &__arrow {
+            width: 35px;
+            height: 35px;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        &__main {
+            // height: 300px;
+        }
+    }
+}
+
+@media (max-width: toEm(480)){
+    .gallery {
+            &__thumb {
+                width: 100px;
+                height: 60px;
+            }
+    
+            &__arrow {
+                width: 25px;
+                height: 25px;
+    
+                svg {
+                    width: 15px;
+                    height: 15px;
+                }
+            }
+    
+            &__main {
+                // height: 250px;
+            }
+        }
+}

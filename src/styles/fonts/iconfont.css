@@ -1,0 +1,11 @@
+@font-face { 
+	font-family: "iconfont"; 
+	font-display: swap;
+	src: url("C://Users/yaros/Desktop/shop/shop/src/assets/svgicons/preview/iconfont.woff2?d1fe1f7d153cd6afb6dc45d85ce376ae") format("woff2"); 
+} 
+[class*="--icon-"]::before{
+	font-family: iconfont; 
+}
+	[class*="--icon-tel"]::before { 
+		content: "\f101"; 
+	} 
